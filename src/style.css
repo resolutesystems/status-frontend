@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-neutral-900;
+}
+
+#app {
+    @apply text-neutral-50;
+
+    width: min(80%, 1000px);
+    margin: auto;
+    font-family: monospace;
+}
+
+.chart-title {
+    box-shadow: inset 0px 0px 6px theme(colors.neutral.400), inset 0px 0px 6px theme(colors.neutral.400);
+}
+
+.online-circle {
+    @apply bg-green-600;
+    box-shadow: 0 0 10px theme(colors.green.500);
+}
+
+.offline-circle {
+    @apply bg-red-600;
+    box-shadow: 0 0 10px theme(colors.red.500);
+}
