@@ -34,8 +34,8 @@ export function MetricChart({ title, datapoints, max, lineColors, fillColors }: 
                 data: {
                     labels: datapoints.timestamps.map(timestamp => {
                         const date = new Date(timestamp);
-                        const hour = date.getHours();
-                        const minute = date.getMinutes();
+                        const hour = ("0" + date.getHours()).slice(-2);
+                        const minute = ("0" + date.getMinutes()).slice(-2);
                         return `${hour}:${minute}`;
                     }),
                     datasets: datapoints.datasets.map((datas, index) => {

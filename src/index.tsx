@@ -4,6 +4,7 @@ import "./style.scss";
 import { MetricChart } from "./chart";
 import { useEffect, useState } from "preact/hooks";
 import { Service } from "./service";
+import { API_URL } from "./consts";
 
 export function App() {
     const [datapoints, setDatapoints] = useState(undefined as AllDataPoints);
@@ -11,12 +12,12 @@ export function App() {
 
     useEffect(() => {
         // fetch datapoints
-        fetch("http://127.0.0.1:3000/datapoints")
+        fetch(`${API_URL}/datapoints`)
         .then(res => res.json())
         .then(res => setDatapoints(res));
 
         // fetch services
-        fetch("http://127.0.1:3000/services")
+        fetch(`${API_URL}/services`)
         .then(res => res.json())
         .then(res => setServices(res));
     }, []);
