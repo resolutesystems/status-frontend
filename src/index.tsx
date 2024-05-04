@@ -1,6 +1,6 @@
 import { render } from "preact";
 
-import "./style.css";
+import "./style.scss";
 import { MetricChart } from "./chart";
 import { useEffect, useState } from "preact/hooks";
 import { Service } from "./service";
@@ -22,16 +22,19 @@ export function App() {
     }, []);
 
     return (
-        <div class="my-4">
-            <h1 class="text-center text-6xl font-bold">Status Page</h1>
-            <div class="flex gap-4 mt-10">
-                {datapoints !== undefined && <MetricChart title="CPU" datapoints={datapoints.cpu} max={100} lineColors={["#b16286"]} fillColors={["#d3869b64"]}/>}
-                {datapoints !== undefined && <MetricChart title="Memory" datapoints={datapoints.memory} max={100} lineColors={["#d79921"]} fillColors={["#fabd2f64"]}/>}
-                {datapoints !== undefined && <MetricChart title="Network" datapoints={datapoints.network} lineColors={["#458588", "#98971a"]} fillColors={["#83a59864", "#b8bb2664"]}/>}
+        <div class="res flex flex-col justify-center items-center h-screen">
+            <div class="res">
+                <h1 class="text-center text-6xl font-bold"><a class="text-[#E0CCFF]" href="https://cipherfiles.com/">Cipher Files</a> System Monitor</h1>
+                <div class="flex gap-4 mt-10">
+                    {datapoints !== undefined && <MetricChart title="CPU" datapoints={datapoints.cpu} max={100} lineColors={["#b16286"]} fillColors={["#d3869b64"]}/>}
+                    {datapoints !== undefined && <MetricChart title="Memory" datapoints={datapoints.memory} max={100} lineColors={["#d79921"]} fillColors={["#fabd2f64"]}/>}
+                    {datapoints !== undefined && <MetricChart title="Network" datapoints={datapoints.network} lineColors={["#458588", "#98971a"]} fillColors={["#83a59864", "#b8bb2664"]}/>}
+                </div>
+                <div class="mt-5">
+                    {services.map(service => <Service status={service}/>)}
+                </div>
             </div>
-            <div class=" mt-5">
-                {services.map(service => <Service status={service}/>)}
-            </div>
+            <p class="text-center mt-5 text-neutral-600">Want to make your own website monitor thing that looks like this?<br/><a class="text-neutral-500 underline" href="https://github.com/resolutesystems/status-frontend">We’ve open sourced this one!</a></p>
         </div>
     );
 }

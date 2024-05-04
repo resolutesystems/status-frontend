@@ -56,8 +56,8 @@ export function MetricChart({ title, datapoints, max, lineColors, fillColors }: 
     }, [datapoints]);
 
     return (
-        <div class="w-96 bg-black">
-            <h3 class="chart-title text-lg py-1 text-center bg-neutral-700 font-bold">{title}</h3>
+        <div class="w-96 border overflow-hidden border-white rounded-lg whiteshadow">
+            <h3 class="text-lg py-1 text-center border-b border-white bg-transparent font-bold">{title}</h3>
             <canvas ref={ref}></canvas>
         </div>
     );

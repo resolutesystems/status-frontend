@@ -1,0 +1,173 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './variables.scss';
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/font/ClashDisplay-Extralight.otf");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/font/ClashDisplay-Light.otf");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/font/ClashDisplay-Regular.otf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/font/ClashDisplay-Medium.otf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/font/ClashDisplay-Semibold.otf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/font/ClashDisplay-Bold.otf");
+    font-weight: 700;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Clash Display", sans-serif;
+
+    &::selection {
+        background-color: $branding;
+    }
+}
+
+body {
+    cursor: default !important;
+    background-color: $dark;
+}
+
+#app {
+    color: $white;
+
+    width: min(80%, 1000px);
+    margin: auto;
+    font-family: monospace;
+}
+
+.chart-title {
+    box-shadow: inset 0px 0px 6px $neutral-400, inset 0px 0px 6px $neutral-400;
+}
+
+.online-circle {
+    background-color: $success-500;
+    box-shadow: 0 0 10px $success-500;
+}
+
+.offline-circle {
+    background-color: $destructive-500;
+    box-shadow: 0 0 10px $destructive-500;
+}
+
+
+.whiteshadow:hover {
+    transition: transform .1s, box-shadow .1s, color .1s, background-color .1s;
+    box-shadow: 3px 3px $white;
+}
+
+a:hover {
+    transition: transform .2s, color .2s, background-color .2s;
+    color: #fff;
+}
+
+.whiteshadow:active {
+    transform: translate(3px, 3px);
+}
+
+.p-footer {
+    margin: 16px 0 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #d4d4d4;
+    letter-spacing: 1px;
+}
+
+.cipherfiles {
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 100%;
+    color: transparent;
+    -webkit-text-stroke: $white;
+    -webkit-text-stroke-width: 1px;
+}
+
+ul li a:before {
+    content: '';
+    display: inline-block;
+    padding: 1px;
+    background-color: $neutral-500;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+input:focus {
+    outline: none;
+    transition: transform .1s, box-shadow .1s;
+    box-shadow: 3px 3px $white;
+}
+
+input::selection {
+    background-color: $branding;
+    color: $dark;
+}
+
+.footer {
+    width: 100%;
+    max-width: 690px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media only screen and (max-width: 600px) {
+        max-width: 90%;
+    }
+
+    img {
+        width: 25px;
+        cursor: pointer;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease-in-out;
+
+        &:hover {
+            filter: none;
+        }
+    }
+
+    ul {
+        display: flex;
+        // gap: 1rem;
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    p {
+        color: #888;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .res {
+        width: 90%;
+        max-width: none;
+    }
+}
