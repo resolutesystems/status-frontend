@@ -1,21 +1,10 @@
-interface DataSet {
-    label: string;
-    data: number[];
-
-    // not included in api response
-    lineColor?: string;
-    fillColor?: string;
-}
-
 interface DataPoints {
-    timestamps: string[];
-    datasets: DataSet[];
-}
-
-interface AllDataPoints {
-    cpu: DataPoints;
-    memory: DataPoints;
-    network: DataPoints;
+    id: number;
+    cpu: number;
+    memory: number;
+    transmitted: number;
+    received: number;
+    created_at: string;
 }
 
 interface ServiceStatus {

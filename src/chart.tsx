@@ -4,13 +4,15 @@ import { useEffect } from "preact/hooks";
 
 interface MetricChartProps {
     title: string;
-    datapoints: DataPoints;
+    values: number[][];
+    timestamps: string[];
     max?: number;
+    valueLabels?: string[];
     lineColors?: string[];
     fillColors?: string[];
 }
 
-export function MetricChart({ title, datapoints, max, lineColors, fillColors }: MetricChartProps) {
+export function MetricChart({ title, values, timestamps, max, valueLabels, lineColors, fillColors }: MetricChartProps) {
     const ref = createRef();
 
     if (lineColors === undefined) {
@@ -32,16 +34,16 @@ export function MetricChart({ title, datapoints, max, lineColors, fillColors }: 
                     },
                 },
                 data: {
-                    labels: datapoints.timestamps.map(timestamp => {
+                    labels: timestamps.map(timestamp => {
                         const date = new Date(timestamp);
                         const hour = ("0" + date.getHours()).slice(-2);
                         const minute = ("0" + date.getMinutes()).slice(-2);
                         return `${hour}:${minute}`;
                     }),
-                    datasets: datapoints.datasets.map((datas, index) => {
+                    datasets: values.map((value, index) => {
                         return {
-                            label: datas.label,
-                            data: datas.data,
+                            label: valueLabels[index],
+                            data: value,
                             borderColor: lineColors[index],
                             backgroundColor: fillColors[index],
                             fill: true,
@@ -53,7 +55,7 @@ export function MetricChart({ title, datapoints, max, lineColors, fillColors }: 
         } else {
             console.log("canvas is undefined!");
         }
-    }, [datapoints]);
+    }, []);
 
     return (
         <div class="w-96 border overflow-hidden border-white rounded-lg whiteshadow">
