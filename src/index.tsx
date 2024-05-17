@@ -23,10 +23,10 @@ export function App() {
     }, []);
 
     return (
-        <div class="res flex flex-col justify-center items-center h-screen">
+        <div class="res flex flex-col justify-center items-center min-h-screen">
             <div class="res">
                 <h1 class="text-center text-6xl font-bold"><a class="text-[#E0CCFF]" href="https://cipherfiles.com/">Cipher Files</a> System Monitor</h1>
-                <div class="flex gap-4 mt-10">
+                <div class="flex flex-col lg:flex-row gap-4 mt-10">
                     {datapoints !== undefined && <MetricChart title="CPU" values={[datapoints.map(dp => dp.cpu)]} timestamps={datapoints.map(dp => dp.created_at)} max={100} valueLabels={["Usage (%)"]} lineColors={["#b16286"]} fillColors={["#d3869b64"]}/>}
                     {datapoints !== undefined && <MetricChart title="Memory" values={[datapoints.map(dp => dp.memory)]} timestamps={datapoints.map(dp => dp.created_at)} valueLabels={["Usage (%)"]} max={100} lineColors={["#d79921"]} fillColors={["#fabd2f64"]}/>}
                     {datapoints !== undefined && <MetricChart title="Network" values={[datapoints.map(dp => dp.received), datapoints.map(dp => dp.transmitted)]} timestamps={datapoints.map(dp => dp.created_at)} valueLabels={["Received (mbit/s)", "Transmitted (mbit/s)"]} lineColors={["#458588", "#98971a"]} fillColors={["#83a59864", "#b8bb2664"]}/>}

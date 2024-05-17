@@ -58,7 +58,7 @@ export function MetricChart({ title, values, timestamps, max, valueLabels, lineC
     }, []);
 
     return (
-        <div class="w-96 border overflow-hidden border-white rounded-lg whiteshadow">
+        <div class="lg:w-96 border overflow-hidden border-white rounded-lg whiteshadow">
             <h3 class="text-lg py-1 text-center border-b border-white bg-transparent font-bold">{title}</h3>
             <canvas ref={ref}></canvas>
         </div>
