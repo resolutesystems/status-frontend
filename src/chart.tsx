@@ -29,6 +29,7 @@ export function MetricChart({ title, values, timestamps, max, valueLabels, lineC
                 options: {
                     scales: {
                         y: {
+                            min: 0,
                             max,
                         },
                     },
